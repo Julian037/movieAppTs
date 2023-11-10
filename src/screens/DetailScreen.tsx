@@ -3,6 +3,7 @@ import React from 'react'
 import { Image, StyleSheet, Text, View , Dimensions, ScrollView} from 'react-native'
 import { Movie } from '../interfaces/movieInterface'
 import { RootStackParams } from '../navigation/Navigation'
+import useMovieDetails from '../hooks/useMovieDetails'
 
 const screenHeight = Dimensions.get('screen').height
 
@@ -14,7 +15,9 @@ const DetailScreen = ({route} : Props) => {
 
   const movie = route.params;
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-  console.log('hola' , movie)
+  
+  useMovieDetails(movie.id)
+
   return (
     <ScrollView>
       <View style={style.imageContainer}>
